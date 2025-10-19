@@ -7,9 +7,9 @@ spring:
     name: huanshi-api
   # 数据库配置
   datasource:
-    url: jdbc:postgresql://your_database_host:your_database_port/your_database_name
-    username: your_username
-    password: your_password
+    url: jdbc:postgresql://127.0.0.1:5432/huanshi
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
 mybatis-plus:
   configuration:
@@ -19,8 +19,10 @@ mybatis-plus:
   global-config:
     db-config:
       logic-delete-field: isDelete # 全局逻辑删除的实体字段名
-      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
-      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+      # 告诉 MP，"未删除" 的值是 false
+      logic-not-delete-value: false
+      # 告诉 MP，"已删除" 的值是 true
+      logic-delete-value: true
 # 接口文档配置
 knife4j:
   enable: true
